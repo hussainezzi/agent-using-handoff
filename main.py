@@ -74,7 +74,7 @@ async def start():
     cl.user_session.set("refund_agent", refund_agent)
     cl.user_session.set("chat_history", [])
 
-    await cl.Message(content="Welcome to the Panaversity AI Assistant! How can I help you today?").send()
+    await cl.Message(content="Welcome to the Panaversity AI Assistant! How can I help you today?  we are the syntaxfit team welcoming you ").send()
 
 
 @cl.on_message
@@ -93,6 +93,7 @@ async def main(message: cl.Message):
     history = cl.user_session.get("chat_history") or []
 
     # Append the user's message to the history.
+
     history.append({"role": "user", "content": message.content})
 
     try:
@@ -107,8 +108,8 @@ async def main(message: cl.Message):
         # IMPORTANT FIX HERE: use "developer" instead of "assistant"
         history.append({"role": "developer", "content": response_content})
 
-        # Update session history
-        cl.user_session.set("chat_history", history)
+        # Update session h
+        # ("chat_history", history)
         print(f"History: {history}")
 
     except Exception as e:
